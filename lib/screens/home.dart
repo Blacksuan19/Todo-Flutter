@@ -23,7 +23,6 @@ class _MyHomePageState extends State<Home> {
         centerTitle: true,
       ),
       body: Center(
-        widthFactor: 1,
         child: Consumer(builder: (context, watch, child) {
           var items = watch(todoListProvider);
           return ListView.builder(
