@@ -16,9 +16,28 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => showDialog(
-          context: widget.cont,
+          context: context,
           builder: (context) {
-            return Text("this is a dialog test");
+            return AlertDialog(
+              shape: AppTheme.shape,
+              title: Column(
+                children: [
+                  Text(widget.item.title),
+                  VerticalDivider(
+                    color: AppTheme.accentColor,
+                  ),
+                ],
+              ),
+              content: Text(widget.item.content),
+              actions: [
+                BuildMaterialButton(
+                  icon: Icons.delete,
+                  text: "Delete",
+                  width: 100,
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ],
+            );
           }),
       child: Container(
         padding: EdgeInsets.all(20),
