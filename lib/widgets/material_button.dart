@@ -1,33 +1,40 @@
 import 'package:flutter/material.dart';
+
 import '../theme.dart';
 
-class BuildFloatingButton extends StatelessWidget {
-  const BuildFloatingButton({
+class BuildMaterialButton extends StatelessWidget {
+  final Function onPressed;
+  final IconData icon;
+  final String text;
+  final double width;
+  const BuildMaterialButton({
     Key key,
+    this.onPressed,
+    this.icon,
+    this.text,
+    this.width,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 120,
+      width: width ?? 100,
       child: MaterialButton(
         elevation: 6.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        onPressed: () => {},
+        shape: AppTheme.shape,
+        onPressed: onPressed,
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         color: Colors.white,
         child: Row(
           children: [
             Icon(
-              Icons.add,
-              color: ThemeColors.accentColor,
+              icon,
+              color: AppTheme.accentColor,
             ),
             Text(
-              "Add Todo",
+              text ?? "",
               style: TextStyle(
-                color: ThemeColors.accentColor,
+                color: AppTheme.accentColor,
               ),
             )
           ],
