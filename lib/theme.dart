@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 
 // main theme colors
 class ThemeColors {
-  final Color _bg = Color(0xFFF1F1F1);
-  final Color _main = Color(0xFF0F111A);
-  final Color _accent = Color(0xFFFF4151);
-
-  Color get bg => _bg;
-  Color get main => _main;
-  Color get accent => _accent;
+  static final Color backgroundColor = Color(0xFFF1F1F1);
+  static final Color primaryColor = Color(0xFF0F111A);
+  static final Color accentColor = Color(0xFFFF4151);
 }
 
 // dynamic spacing depeding on screen size

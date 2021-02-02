@@ -22,12 +22,12 @@ class BuildFloatingButton extends StatelessWidget {
           children: [
             Icon(
               Icons.add,
-              color: ThemeColors().accent,
+              color: ThemeColors.accentColor,
             ),
             Text(
               "Add Todo",
               style: TextStyle(
-                color: ThemeColors().accent,
+                color: ThemeColors.accentColor,
               ),
             )
           ],
