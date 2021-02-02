@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/all.dart';
+import 'models/todo.dart';
 import 'theme.dart';
 import 'widgets/floating_button.dart';
+import 'widgets/todo_item.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Gotta Do It!',
       theme: ThemeData(
           textTheme: GoogleFonts.poppinsTextTheme(
             Theme.of(context).textTheme,
@@ -40,8 +42,20 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
       ),
       body: Container(
-        child: Column(),
-        color: ThemeColors().bg,
+        child: Center(
+          widthFactor: 1,
+          child: Column(
+            children: [
+              ...todoItems.map((item) {
+                return BuildTodoItem(
+                  item: item,
+                  cont: context,
+                );
+              }).toList(),
+            ],
+          ),
+        ),
+        color: ThemeColors.backgroundColor,
       ),
       floatingActionButton: BuildFloatingButton(),
     );
