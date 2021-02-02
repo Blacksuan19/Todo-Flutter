@@ -42,7 +42,7 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
           }),
       child: Container(
         padding: EdgeInsets.all(20),
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
