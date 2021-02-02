@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/todo.dart';
 
+import '../theme.dart';
+import 'material_button.dart';
+
 class BuildTodoItem extends StatefulWidget {
   final Todo item;
-  final BuildContext cont;
 
-  const BuildTodoItem({Key key, this.item, this.cont}) : super(key: key);
+  const BuildTodoItem({Key key, this.item}) : super(key: key);
 
   @override
   _BuildTodoItemState createState() => _BuildTodoItemState();
@@ -20,15 +22,14 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
           builder: (context) {
             return AlertDialog(
               shape: AppTheme.shape,
-              title: Column(
-                children: [
-                  Text(widget.item.title),
-                  VerticalDivider(
-                    color: AppTheme.accentColor,
-                  ),
-                ],
+              scrollable: true,
+              title: Text(
+                widget.item.title,
+                textAlign: TextAlign.center,
               ),
-              content: Text(widget.item.content),
+              content: Text(
+                widget.item.content,
+              ),
               actions: [
                 BuildMaterialButton(
                   icon: Icons.delete,
@@ -41,15 +42,13 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
           }),
       child: Container(
         padding: EdgeInsets.all(20),
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
               color: Colors.black26,
-              // blurRadius: 1,
-
               offset: Offset(1, 6),
             )
           ],
@@ -57,15 +56,8 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Checkbox(
-              value: widget.item.isCompleted,
-              onChanged: (bool value) {
-                setState(() {
-                  widget.item.isCompleted = !widget.item.isCompleted;
-                });
-              },
-            ),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   widget.item.title,
@@ -73,42 +65,30 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
                     decoration: widget.item.isCompleted
                         ? TextDecoration.lineThrough
                         : TextDecoration.none,
-                    fontSize: 20,
+                    fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: widget.item.isCompleted ? Colors.grey : Colors.black,
                   ),
+                  maxLines: 3,
                 ),
                 Text(
                   widget.item.content,
-                  maxLines: 3,
+                  maxLines: 5,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: true,
+                  textWidthBasis: TextWidthBasis.parent,
                 ),
               ],
             ),
-            MaterialButton(
-              onPressed: () => {
+            Checkbox(
+              value: widget.item.isCompleted,
+              onChanged: (bool value) {
                 setState(() {
-                  todoItems.remove(widget.item);
-                })
+                  if (value == true) {}
+                  widget.item.isCompleted = !widget.item.isCompleted;
+                });
               },
-              color: Colors.red,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.delete,
-                    color: Colors.white,
-                  ),
-                  Text(
-                    "Delete Todo",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-            )
+            ),
           ],
         ),
       ),
