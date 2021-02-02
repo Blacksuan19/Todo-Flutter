@@ -1,6 +1,9 @@
 import 'dart:convert';
+import 'package:uuid/uuid.dart';
 
 import 'package:hooks_riverpod/all.dart';
+
+var _uuid = Uuid();
 
 class Todo {
   String id;
@@ -8,11 +11,11 @@ class Todo {
   String content;
   bool isCompleted = false;
   Todo({
-    this.id,
+    String id,
     this.title,
     this.content,
     this.isCompleted,
-  });
+  }) : id = _uuid.v4();
 
   Todo copyWith({
     String id,
