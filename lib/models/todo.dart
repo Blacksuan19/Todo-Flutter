@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:uuid/uuid.dart';
 
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/all.dart';
 
 var _uuid = Uuid();
@@ -80,30 +81,60 @@ class Todo {
   }
 }
 
-List<Todo> todoItems = [
-  Todo(
-      content: "this is a testing to do",
-      id: '1',
-      title: "Testing",
-      isCompleted: true),
-  Todo(
-      content: "this is a testing to do",
-      id: '2',
-      title: "Testing",
-      isCompleted: false),
-  Todo(
-      content: "this is a testing to do",
-      id: '3',
-      title: "Testing",
-      isCompleted: true),
-  Todo(
-      content: "this is a testing to do",
-      id: '4',
-      title: "Testing",
-      isCompleted: false),
-];
+class TodoList extends ChangeNotifier {
+  List<Todo> todoItems = [
+    Todo(
+        content: "this is a testing to do",
+        title: "Testing",
+        isCompleted: true),
+    Todo(
+        content: "this is a testing to do",
+        title: "Finish the App interface",
+        isCompleted: false),
+    Todo(
+        content: "Todo is not deletable from the current UI.",
+        title: "Fix todo deletion",
+        isCompleted: false),
+    Todo(
+        content: "this is a testing to do",
+        title: "Jump on new PyTorch course",
+        isCompleted: false),
+    Todo(
+        content: "Todo is not deletable from the current UI.",
+        title: "Fix todo deletion",
+        isCompleted: false),
+    Todo(
+        content: "this is a testing to do",
+        title: "Jump on new PyTorch course",
+        isCompleted: false),
+    Todo(
+        content: "Todo is not deletable from the current UI.",
+        title: "Fix todo deletion",
+        isCompleted: false),
+    Todo(
+        content: "this is a testing to do",
+        title: "Jump on new PyTorch course",
+        isCompleted: false),
+    Todo(
+        content: "Todo is not deletable from the current UI.",
+        title: "Fix todo deletion",
+        isCompleted: false),
+    Todo(
+        content: "this is a testing to do",
+        title: "Jump on new PyTorch course",
+        isCompleted: false),
+  ];
+  void remove(Todo item) {
+    todoItems.remove(item);
+    notifyListeners();
+  }
+
+  void add(Todo item) {
+    todoItems.add(item);
+  }
+}
 
 // ignore: top_level_function_literal_block
-final todoListProvider = Provider((ref) {
-  return todoItems;
+final todoListProvider = ChangeNotifierProvider((ref) {
+  return TodoList();
 });
