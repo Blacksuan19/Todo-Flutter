@@ -71,11 +71,15 @@ class _MyHomePageState extends State<Home> {
             ),
             actions: [
               BuildMaterialButton(
-                icon: Icons.cancel,
-                text: "Cancel",
-                width: 100,
-                onPressed: () => Navigator.pop(context),
-              ),
+                  icon: Icons.cancel,
+                  text: "Cancel",
+                  width: 100,
+                  onPressed: () {
+                    // clear text fields
+                    _titleController.clear();
+                    _contentController.clear();
+                    Navigator.pop(context);
+                  }),
               BuildMaterialButton(
                 icon: Icons.add,
                 text: "Add",
