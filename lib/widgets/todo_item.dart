@@ -54,13 +54,13 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
-          // simulate bottom elvation same as material button
+          // simulate bottom elevation same as material button
           boxShadow: [
             BoxShadow(
               color: Colors.black26,
               blurRadius: 6.0,
               spreadRadius: 0.0,
-              offset: Offset(0, 6.0), // shadow direction: bottom right
+              offset: Offset(0, 6.0),
             )
           ],
         ),
@@ -83,6 +83,7 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
                           widget.item.isCompleted ? Colors.grey : Colors.black,
                     ),
                     maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   Text(
                     widget.item.content,
@@ -97,7 +98,6 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
               value: widget.item.isCompleted,
               onChanged: (bool value) {
                 setState(() {
-                  if (value == true) {}
                   widget.item.isCompleted = !widget.item.isCompleted;
                 });
               },
