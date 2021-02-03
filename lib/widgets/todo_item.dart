@@ -82,7 +82,7 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
                       color:
                           widget.item.isCompleted ? Colors.grey : Colors.black,
                     ),
-                    maxLines: 3,
+                    maxLines: 1,
                   ),
                   Text(
                     widget.item.content,
