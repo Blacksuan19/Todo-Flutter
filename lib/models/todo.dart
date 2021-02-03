@@ -116,7 +116,8 @@ class TodoList extends ChangeNotifier {
         title: "Jump on new PyTorch course",
         isCompleted: false),
     Todo(
-        content: "Todo is not deletable from the current UI.",
+        content:
+            "Todo is not deletable from the current UI. this is extra text to test overflow behavior it should be better now",
         title: "Fix todo deletion",
         isCompleted: false),
     Todo(
