@@ -41,6 +41,8 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
             );
           }),
       child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height * 0.13,
         padding: EdgeInsets.all(20),
         margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         decoration: BoxDecoration(
@@ -59,29 +61,31 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.item.title,
-                  style: TextStyle(
-                    decoration: widget.item.isCompleted
-                        ? TextDecoration.lineThrough
-                        : TextDecoration.none,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: widget.item.isCompleted ? Colors.grey : Colors.black,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.item.title,
+                    style: TextStyle(
+                      decoration: widget.item.isCompleted
+                          ? TextDecoration.lineThrough
+                          : TextDecoration.none,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color:
+                          widget.item.isCompleted ? Colors.grey : Colors.black,
+                    ),
+                    maxLines: 3,
                   ),
-                  maxLines: 3,
-                ),
-                Text(
-                  widget.item.content,
-                  maxLines: 5,
-                  overflow: TextOverflow.ellipsis,
-                  softWrap: true,
-                  textWidthBasis: TextWidthBasis.parent,
-                ),
-              ],
+                  Text(
+                    widget.item.content,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    // softWrap: true,
+                  ),
+                ],
+              ),
             ),
             Checkbox(
               value: widget.item.isCompleted,
