@@ -23,18 +23,16 @@ class _MyHomePageState extends State<Home> {
         elevation: 0,
         centerTitle: true,
       ),
-      body: Center(
-        child: Consumer(builder: (context, watch, child) {
-          var items = watch(todoListProvider);
-          return ListView.builder(
-              itemCount: items.todoItems.length,
-              itemBuilder: (context, index) {
-                return BuildTodoItem(
-                  item: items.todoItems[index],
-                );
-              });
-        }),
-      ),
+      body: Consumer(builder: (context, watch, child) {
+        var items = watch(todoListProvider);
+        return ListView.builder(
+            itemCount: items.todoItems.length,
+            itemBuilder: (context, index) {
+              return BuildTodoItem(
+                item: items.todoItems[index],
+              );
+            });
+      }),
       floatingActionButton: BuildMaterialButton(
         icon: Icons.add,
         text: "Add Todo",

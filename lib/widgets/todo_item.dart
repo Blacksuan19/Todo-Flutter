@@ -46,10 +46,13 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
+          // simulate bottom elvation same as material button
           boxShadow: [
             BoxShadow(
               color: Colors.black26,
-              offset: Offset(1, 6),
+              blurRadius: 6.0,
+              spreadRadius: 0.0,
+              offset: Offset(0, 6.0), // shadow direction: bottom right
             )
           ],
         ),
