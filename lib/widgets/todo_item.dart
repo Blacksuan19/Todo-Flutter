@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/todo.dart';
+import 'package:hooks_riverpod/all.dart';
 
 import '../theme.dart';
 import 'material_button.dart';
@@ -35,7 +36,12 @@ class _BuildTodoItemState extends State<BuildTodoItem> {
                   icon: Icons.delete,
                   text: "Delete",
                   width: 100,
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () {
+                    // delete todo
+                    context.read(todoListProvider).remove(widget.item);
+                    // hide the pop up
+                    Navigator.pop(context);
+                  },
                 ),
               ],
             );
