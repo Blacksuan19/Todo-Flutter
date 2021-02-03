@@ -125,13 +125,17 @@ class TodoList extends ChangeNotifier {
         title: "Jump on new PyTorch course",
         isCompleted: false),
   ];
+
+  // remove todo
   void remove(Todo item) {
     todoItems.remove(item);
     notifyListeners();
   }
 
+  // add new item to the top of the list
   void add(Todo item) {
-    todoItems.add(item);
+    todoItems.insert(0, item);
+    notifyListeners();
   }
 }
 

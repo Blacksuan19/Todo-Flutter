@@ -24,12 +24,12 @@ class _MyHomePageState extends State<Home> {
         centerTitle: true,
       ),
       body: Consumer(builder: (context, watch, child) {
-        var items = watch(todoListProvider);
+        var items = watch(todoListProvider).todoItems;
         return ListView.builder(
-            itemCount: items.todoItems.length,
+            itemCount: items.length,
             itemBuilder: (context, index) {
               return BuildTodoItem(
-                item: items.todoItems[index],
+                item: items[index],
               );
             });
       }),
@@ -80,7 +80,25 @@ class _MyHomePageState extends State<Home> {
                 icon: Icons.add,
                 text: "Add",
                 width: 80,
-                onPressed: () => {},
+                onPressed: () {
+                  // make sure both text fields are not empty
+                  if (!_titleController.text.isEmpty &
+                      !_contentController.text.isEmpty) {
+                    // add todo to list
+                    context.read(todoListProvider).add(
+                          Todo(
+                            title: _titleController.text,
+                            content: _contentController.text,
+                            isCompleted: false,
+                          ),
+                        );
+                    // clear text fields
+                    _titleController.clear();
+                    _contentController.clear();
+                    // close popup
+                    Navigator.pop(context);
+                  }
+                },
               )
             ],
           );
